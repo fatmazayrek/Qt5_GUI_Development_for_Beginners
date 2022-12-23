@@ -1,4 +1,4 @@
-# Qt5_GUI_Development_for_Beginners
+/* Qt5_GUI_Development_for_Beginners*/
  
 Hi everyone, I put into this repository some important point from "Qt 5 C++ GUI Development for Beginners" course which I took. 
 

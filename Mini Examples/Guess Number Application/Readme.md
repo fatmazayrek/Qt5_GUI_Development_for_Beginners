@@ -12,3 +12,9 @@ If users enter a value that is not a number, an error window is open.
 
 When users enter a value, it indicates the relationship between the numbers, making it easier for them to make accurate predictions.
 ![image](https://user-images.githubusercontent.com/91613858/209480650-dc369568-89f8-4c16-84e0-c5fad9d18695.png)
+
+------>
+
+In addition, I added a StartOver button for new Guessing:)
+![image](https://user-images.githubusercontent.com/91613858/209481164-b519a47e-0c3d-4d65-aed9-fc2af17ac81a.png)
+

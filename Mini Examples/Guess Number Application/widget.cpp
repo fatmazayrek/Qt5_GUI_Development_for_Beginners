@@ -11,7 +11,7 @@ Widget::Widget(QWidget *parent)
     ui->setupUi(this);
 
     srand(time(0));
-    guessNumber = rand() % 10 + 1;
+    guessNumber = rand() % 100 + 1;
 
 }
 
@@ -40,7 +40,6 @@ void Widget::on_pushButton_clicked()
 
             else if(numberInput == guessNumber){
                 ui->messageLabel->setText(ui->messageLabel->text().append("YES!! Right Guess:))"));
-            this->close();
             }
 
             else{
@@ -61,5 +60,13 @@ void Widget::on_pushButton_clicked()
             ui->NumberEdit->clear();
         }
     }
+}
+
+
+void Widget::on_startOver_clicked()
+{
+    ui->messageLabel->clear();
+    ui->NumberEdit->clear();
+    guessNumber = rand() % 100 + 1;
 }
 

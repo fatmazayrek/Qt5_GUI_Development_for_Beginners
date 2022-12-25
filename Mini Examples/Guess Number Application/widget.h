@@ -19,6 +19,8 @@ private slots:
     void on_pushButton_clicked();
 
 
+    void on_startOver_clicked();
+
 private:
     Ui::Widget *ui;
     int guessNumber;

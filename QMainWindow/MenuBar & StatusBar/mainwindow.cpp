@@ -23,10 +23,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     //Adding shortcut --->
     QAction *copy = new QAction("Copy");
-    copy->setShortcut(Qt::Key_Enter);
+    copy->setShortcut(QKeySequence(tr("Shift+A")));
 
     QAction *cut = new QAction("Cut");
-    copy->setShortcut(Qt::Key_A);
+    cut->setShortcut(QKeySequence::SelectAll);
 
     //Create MenuBar ---->
     QMenu *file = menuBar()->addMenu("File");

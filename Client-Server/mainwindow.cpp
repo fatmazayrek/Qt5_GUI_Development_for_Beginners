@@ -17,11 +17,6 @@ MainWindow::MainWindow(QWidget *parent)
     else{
         qDebug() << "Failed";
     }
-
-//    int value1 = 0xFFFF;
-//    bool ok;
-//    QString value = "0x000A";
-//    qDebug() << value.toInt(&ok, 10);
 }
 
 void MainWindow::newConnection(){

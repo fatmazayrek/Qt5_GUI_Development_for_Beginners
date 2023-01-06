@@ -7,4 +7,4 @@ In this example, I wanted to show you how you can use MainWindow class. In this 
 
 Also, I added some Actions with their shortcut in menubar🎇
 
-![image](https://user-images.githubusercontent.com/91613858/210274606-d7412b02-f671-482f-92a0-8cf4e9e461a2.png)
+![image](https://user-images.githubusercontent.com/91613858/210275529-edae5eec-b847-4625-9b9a-5fad8065b3eb.png)

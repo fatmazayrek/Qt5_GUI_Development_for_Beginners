@@ -8,7 +8,9 @@ In this example, I did MultiClient-Server Application. This Application contains
 
 --------->
 
-The Server Terminal shows the messages taken/given messages.  
+The Server Terminal shows the messages taken/given messages:sparkler:  
 
 ![image](https://user-images.githubusercontent.com/91613858/211641397-74ee5193-93dd-4351-8385-a78d64036dfd.png)
+
+Hopefully it benefits your work:woman_technologist:
 

@@ -1,6 +1,6 @@
 Hi everyone🎇
 
-In this example, I showed you how to use QMessageBox. 
+In this example, I showed you how to use QMessageBox💡
 
 I created a simple QPushButton and if you clic this button, a MessageBox is opened.
 

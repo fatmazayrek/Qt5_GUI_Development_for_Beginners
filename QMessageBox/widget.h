@@ -20,7 +20,6 @@ public:
 
 private:
     Ui::Widget *ui;
-    int *addOrCancel;
 
 private slots:
     void on_pushButtonClicked();

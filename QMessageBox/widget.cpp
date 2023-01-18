@@ -6,8 +6,7 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    *addOrCancel = 0;
-
+        
     QIcon icon("C:/Users/Fatma/OneDrive/Masaüstü/Fatma/DERSLER-KODLAR/KODLAR/Qt5 GUI/QMessageBox_Example/buttonImage.png");
 
     QFont f1("Trebuchet MS", 11, QFont::Cursive);

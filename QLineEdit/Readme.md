@@ -14,3 +14,5 @@ Firstly, You should fill all the LineEdit when you don't fill all of them, an QM
 
 When you fill all of them and click the button, all information is written on Terminal💯
 
+Note: Also I added some properties on QLineEdit which allow only uppercase. 
+

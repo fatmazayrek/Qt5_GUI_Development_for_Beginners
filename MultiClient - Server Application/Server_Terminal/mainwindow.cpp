@@ -6,14 +6,19 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    server = new QTcpServer(this);   //new QTcpServer();
-//Server can only read message from client.
+    server = new QTcpServer(this);
 
     ui->serverMessage->setReadOnly(true);
+    //Server can only read message from client.
+
+    ui->serverMessage->setPlaceholderText("Replaced data");
 
     if(server->listen(QHostAddress::Any, 1234))
+//bool QTcpServer::listen(const QHostAddress &address, int port): Tells the server to listen for incoming connections on address address and port port. If port is 0, a port is chosen automatically. If address is QHostAddress::Any, the server will listen on all network interfaces.
     {
         connect(server, &QTcpServer::newConnection, this, &MainWindow::newConnection);
+//void QTcpServer::newConnection(): This signal is emitted every time a new connection is available
+
         connect(this, &MainWindow::newMessage, this, &MainWindow::showMessage);
 
         ui->statusbar->showMessage("Server is listening");
@@ -38,8 +43,10 @@ MainWindow::~MainWindow()
 void MainWindow::newConnection()
 {
     while(server->hasPendingConnections())
+//bool QTcpServer::hasPendingConnections(): Returns true if the server has a pending connection; otherwise returns false
     {
         appendClient(server->nextPendingConnection());
+//QTcpSoclet *QTcpServer::nextPendingConnection(): Returns the next pending connection as a connected QTcpSocket object
     }
 }
 
@@ -47,7 +54,10 @@ void MainWindow::appendClient(QTcpSocket *client)
 {
     clients_set.insert(client);
     connect(client, &QTcpSocket::readyRead, this, &MainWindow::readClient);
+//void QIODevice::readyRead(): This signal is emitted once every time new data is available for reading from the device's current read channel. It will only be emitted again once new data is available, such as when a new payload of network data has arrived on your network socket, or when a new block of data has been appended to your device.
+
     connect(client, &QTcpSocket::disconnected, this, &MainWindow::disConnected);
+//void QAbstractSocket::disconnected(): This signal is emitted when the socket has been disconnected
 
     ui->comboBox->addItem(QString::number(client->socketDescriptor()));
 
@@ -59,12 +69,18 @@ void MainWindow::readClient()
     QTcpSocket *client = reinterpret_cast<QTcpSocket*>(sender());
 //Qobject *Qobject::sender(): Returns a pointer to the object that sent the signal, if called in a slot activated by a signal; otherwise it returns nullptr. The pointer is valid only during the execution of the slot that calls this function from this object's thread context.
 
+//reinterpret_cast<datatype *>(pointer_value): It is used to convert a pointer of some data type into a pointer of another data type, even if the data types before and after conversion are different.
+
+//Object *QObject::sender(): Returns a pointer to the object that sent the signal, if called in a slot activated by a signal; otherwise it returns nullptr. The pointer is valid only during the execution of the slot that calls this function from this object's thread context.
+
     QByteArray byteArray;
 
     QDataStream socketStream(client);
 //QDataStream::QDataStrem(QIODevice *d): Constructs a data stream that uses the I/O device d
+
     socketStream.setVersion(QDataStream::Qt_5_15);
 //void QDataStream::setVersion(int a): Sets the version number of the data serialization format to v, a value of the Version enum. You don't have to set a version if you are using the current version of Qt, but it is recommended.
+
     socketStream.startTransaction();
     socketStream >> byteArray;
 //QDataStream &QDataStream::operator>>(): Reads data.
@@ -80,7 +96,10 @@ void MainWindow::readClient()
 
     QString message = QString("Incoming message from %1: %2").arg(client->socketDescriptor()).arg(QString::fromStdString(byteArray.toStdString()));
 
+    qDebug() << message << endl;
+
     replaceMessage(byteArray);
+//Replace first two bytes in incoming message from client.
 
     emit newMessage(message);
 }
@@ -104,6 +123,7 @@ void MainWindow::disConnected()
     }
 
     refCombobox();
+//Remove SocketDescriptor of the deleted client from the combobox.
 
     client->deleteLater();
 }
@@ -145,10 +165,12 @@ void MainWindow::sendMessage(QTcpSocket *client)
         {
             QString messagepref;
             messagepref = "%1 : Outgoing replaced message from server: ";
-
             messagepref = messagepref.arg(client->socketDescriptor());
+
             QString message = ui->serverMessage->text();
             messagepref.append(message);
+
+            qDebug() << messagepref << endl;
 
             showMessage(messagepref);
 
@@ -189,13 +211,13 @@ void MainWindow::replaceMessage(QByteArray &byteArray)
     int size = byteArray.size();
 
     QByteArray temp;
-    QByteArray lastByte = byteArray.mid(size-2, 2);
-    QByteArray lastSecByte = byteArray.mid(size-4, 2);
+    QByteArray lastByte = byteArray.mid(size-2, 2);  //Give lastByte
+    QByteArray lastSecByte = byteArray.mid(size-4, 2); //Give second lastByte
 
     temp = lastByte;
 
-    byteArray = byteArray.replace(lastByte,lastSecByte);
-    byteArray = byteArray.replace(size-4, 2, temp);
+    byteArray = byteArray.replace(size-2, 2,lastSecByte); //Replace lastByte with SecondlastByte
+    byteArray = byteArray.replace(size-4, 2, temp);  //Replace secondlastByte with lastByte
 
     ui->serverMessage->setText(QString::fromStdString(byteArray.toStdString()));
     ui->serverMessage->setReadOnly(true);

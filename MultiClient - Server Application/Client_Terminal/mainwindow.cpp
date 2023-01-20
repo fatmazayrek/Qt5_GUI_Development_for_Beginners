@@ -7,8 +7,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     client = new QTcpSocket(this);
-    ui->clientMessage->setInputMask("Hhhhhhhhhhh");
+    ui->clientMessage->setInputMask("Hhhhhhhhhhhhhhhhhhhhhh");
 //User should input the message in hex format.
+
     ui->clientMessage->setPlaceholderText("You have to input the message in hex format");
 
     connect(this, &MainWindow::newMessage, this, &MainWindow::showMessage);
@@ -16,6 +17,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(client, &QTcpSocket::disconnected, this, &MainWindow::disConnected);
 
     client->connectToHost(QHostAddress::LocalHost, 1234);
+//void QAbstractSocket::connectToHost(const QHostAddress &address, int port, QIODevice::OpenMode openMode = ReadWrite): Attempts to make a connection to address on port port.
+
 //enum QHostAddress::LocalHost: The IPv4 localhost address. Equivalent to QHostAddress("127.0.0.1").
 
     if(client->waitForConnected())

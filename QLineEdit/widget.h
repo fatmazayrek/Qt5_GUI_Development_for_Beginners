@@ -22,5 +22,8 @@ public:
 
 private:
     Ui::Widget *ui;
+
+private slots:
+    void toHigherCase(const QString &text);
 };
 #endif // WIDGET_H

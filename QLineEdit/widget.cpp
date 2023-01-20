@@ -20,6 +20,9 @@ Widget::Widget(QWidget *parent)
     firstLine->move(100, 10);
     firstLine->setMinimumSize(200, 50);
 
+    //1.Method ---->
+    connect(firstLine, &QLineEdit::textChanged, this, &Widget::toHigherCase);
+
     QLabel *lastName = new QLabel(this);
     lastName->setText("LastName");
     lastName->move(10, 80);
@@ -30,6 +33,12 @@ Widget::Widget(QWidget *parent)
     lastLine->setPlaceholderText("Enter your lastName");
     lastLine->move(100, 80);
     lastLine->setMinimumSize(200, 50);
+
+    //2.Method --->
+    connect(lastLine, &QLineEdit::textChanged, [=](QString text)
+    {
+        lastLine->setText(text.toUpper());
+    });
 
     QLabel *city = new QLabel(this);
     city->setText("City");
@@ -63,5 +72,12 @@ Widget::Widget(QWidget *parent)
 Widget::~Widget()
 {
     delete ui;
+}
+
+void Widget::toHigherCase(const QString &text)
+{
+    QLineEdit *lineEdit = reinterpret_cast<QLineEdit*>(sender());
+
+    lineEdit->setText(text.toUpper());
 }
 

@@ -19,6 +19,7 @@ Widget::Widget(QWidget *parent)
     QHBoxLayout *layout_1 = new QHBoxLayout();
     layout_1->addWidget(ui->label);
 
+    //QVBoxLayout Example ----->
     QVBoxLayout *vlayout = new QVBoxLayout(this);
     vlayout->addLayout(layout_1);
     vlayout->addLayout(layout);

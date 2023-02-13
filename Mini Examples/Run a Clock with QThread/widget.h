@@ -12,6 +12,7 @@
 #include <QDateTime>
 #include "thewatch.h"
 #include "watchupdaterthread.h"
+#include <QThreadPool>
 
 QT_BEGIN_NAMESPACE
 namespace Ui

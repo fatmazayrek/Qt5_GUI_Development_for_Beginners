@@ -9,8 +9,10 @@
 #include <QFont>
 #include <QDebug>
 #include <QDateTime>
+#include <QRunnable>
+#include <QThreadPool>
 
-class WatchUpdaterThread : public QThread
+class WatchUpdaterThread : public QThread, public QObject
 {
     Q_OBJECT
 

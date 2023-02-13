@@ -10,10 +10,6 @@ Widget::Widget(QWidget *parent)
     thewatch = new TheWatch();
     thread = new WatchUpdaterThread(this);
 
-//    QVBoxLayout *vlayout;
-//    vlayout->addWidget(thewatch);
-//    setLayout(vlayout);
-
     ui->verticalLayout->addWidget(thewatch);
 
     connect(thread, SIGNAL(updateTimeFromThread(QString)), thewatch, SLOT(writeUpdatedTime(QString)) );
@@ -24,10 +20,17 @@ Widget::Widget(QWidget *parent)
 Widget::~Widget()
 {
     delete ui;
-
-    thread->exit();
-
-    delete thread;
     delete thewatch;
+
+    thread->quit();
+    thread->wait(1000);
+
+    if (!thread->isFinished()) {
+        thread->terminate();
+    }
+
+
 }
+
+
 

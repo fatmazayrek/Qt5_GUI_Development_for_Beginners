@@ -13,7 +13,7 @@ TheWatch::TheWatch(QWidget *parent)
     label->setAlignment(Qt::AlignCenter);
     label->setMargin(0); // to stretch the widget
 
-    qDebug() << "TheWatch Constructor";
+    qDebug() << "TheWatch Constructor, Thread ID: " << QThread::currentThread();
 
     layout->addWidget(label);
 }

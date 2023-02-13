@@ -1,7 +1,7 @@
 #include "watchupdaterthread.h"
 
 WatchUpdaterThread::WatchUpdaterThread(QObject *parent)
-    : QThread{parent}
+    : QThread{parent}, QObject(parent)
 {
 
 }

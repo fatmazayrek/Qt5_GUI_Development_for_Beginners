@@ -1,4 +1,4 @@
-## Qt5_GUI_Development_for_Beginners
+## :pick: Qt5 GUI Development for Beginners
  
 Hi everyone😄, I put into this repository some **_important point_** from **"Qt 5 C++ GUI Development for Beginners/ Daniel Gakwaya"** course which I took. 
 

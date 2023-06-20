@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>almanca.qm</file>
+        <file>farsca.qm</file>
+    </qresource>
+</RCC>

@@ -46,9 +46,3 @@ void MainWindow::on_yazdirButton_clicked()
     msgBox.setMinimumSize(200, 100);
     int ret = msgBox.exec();
 }
-
-
-void MainWindow::on_selectDil_clicked()
-{
-
-}

@@ -22,8 +22,6 @@ signals:
 private slots:
     void on_yazdirButton_clicked();
 
-    void on_selectDil_clicked();
-
 private:
     Ui::MainWindow *ui;
 

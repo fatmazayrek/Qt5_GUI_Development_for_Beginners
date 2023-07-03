@@ -8,7 +8,7 @@ Enter this command: lupdate -pro YourApplication.pro -ts yourLanguage.ts
 
 After you created .ts file, You should go to Qt Linguist. Click Open and select your .ts file✅
 
-Trasnlate every word of the your application and Click Save.
+Translate every word of the your application and Click Save.
 
 After corrections, open Qt terminal again and enter this command: lrelease yourLanguage.ts
 

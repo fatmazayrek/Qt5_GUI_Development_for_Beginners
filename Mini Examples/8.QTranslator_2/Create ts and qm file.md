@@ -6,9 +6,9 @@ Enter this command: lupdate -pro YourApplication.pro -ts yourLanguage.ts
 
 ![image](https://github.com/fatmazayrek/Qt5_GUI_Development_for_Beginners/assets/91613858/7c28c6a8-1490-4d87-baca-4f65d5dd14cd)
 
-After you created .ts file, You should Qt Linguist. Click Open and select your .ts file✅
+After you created .ts file, You should go to Qt Linguist. Click Open and select your .ts file✅
 
-Trasnlate every word of the your application and Click Save.
+Translate every word of the your application and Click Save.
 
 After corrections, open Qt terminal again and enter this command: lrelease yourLanguage.ts
 
